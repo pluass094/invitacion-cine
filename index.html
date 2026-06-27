@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Una funcion solo para nosotros</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="sparkles" aria-hidden="true"></canvas>
+
+  <main class="cinema">
+    <section class="stage" aria-labelledby="main-title">
+      <div class="projector" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="screen">
+        <p class="label">Estreno exclusivo</p>
+        <h1 id="main-title">Spider-Man: Brand New Day</h1>
+        <p class="subtitle">Una noche de cine, risas, palomitas y tu mano en la mia.</p>
+
+        <div class="poster" aria-label="Poster de Spider-Man Brand New Day">
+          <img src="assets/SM.jpg" alt="Poster de Spider-Man Brand New Day">
+        </div>
+        <p class="poster-caption">Funcion especial<br><strong>Spider-Man</strong></p>
+      </div>
+    </section>
+
+    <section class="invite-panel" aria-label="Detalles de la invitacion">
+      <div class="message">
+        <p class="small-title">Funcion privada</p>
+        <h2>Mi amor, tengo una pregunta importante...</h2>
+        <p>
+          Quiero invitarte al cine, pero no como cualquier salida: quiero que esta sea una
+          mini aventura nuestra para ver <strong>Spider-Man: Brand New Day</strong>, con boleto,
+          asiento reservado, solo para los dos.
+        </p>
+      </div>
+
+      <div class="controls" aria-label="Personalizar invitacion">
+        <label>
+          Pelicula
+          <input id="movieInput" type="text" value="Spider-Man: Brand New Day" maxlength="32">
+        </label>
+        <label>
+          Dia
+          <input id="dateInput" type="text" value="jueves 30 de julio" maxlength="28">
+        </label>
+        <label>
+          Hora
+          <input id="timeInput" type="text" value="17:20 PM" maxlength="12">
+        </label>
+      </div>
+
+      <div class="music-card" aria-label="Cancion de la invitacion">
+        <div>
+          <p class="small-title">Gone Gone Gone</p>
+          <h3>Es una canción muy especial </h3>
+          <p id="musicStatus">Presiona play para disfrutarla.</p>
+        </div>
+        <button class="music-btn" id="musicBtn" type="button" aria-label="Reproducir musica">
+          Play
+        </button>
+        <audio id="loveSong" src="assets/gone-gone-gone.mp3" preload="auto"></audio>
+      </div>
+
+      <div class="seat-zone">
+        <p class="small-title">Elige nuestros asientos</p>
+        <div class="seats" id="seats" aria-label="Selector de asientos"></div>
+      </div>
+
+      <article class="ticket" aria-label="Boleto de cine">
+        <div class="ticket-main">
+          <p class="ticket-overline">Boleto para dos</p>
+          <h3 id="ticketMovie">Spider-Man: Brand New Day</h3>
+          <p id="ticketDate">jueves 30 de julio - 17:20 PM</p>
+          <p id="ticketSeats">Asientos: A1 + A2</p>
+        </div>
+        <div class="ticket-side">
+          <span>CINE</span>
+          <strong>VIP</strong>
+        </div>
+      </article>
+
+      <div class="answer-area">
+        <button class="primary-btn" id="yesBtn" type="button">Si, acepto la funcion</button>
+        <button class="ghost-btn" id="surpriseBtn" type="button">Ver trailer secreto</button>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="modal">
+    <div class="modal-content">
+      <button class="close-btn" id="closeModal" type="button" aria-label="Cerrar">x</button>
+      <p class="small-title">Trailer secreto</p>
+      <h2 id="modalTitle">Spoiler: voy a estar feliz de ir contigo.</h2>
+      <p id="modalText">
+        Preparate para palomitas, una pelicula y esa parte donde finjo ver la pantalla
+        pero en realidad te estoy mirando a ti.
+      </p>
+      <div class="countdown" id="countdown">Luces, camara...</div>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>

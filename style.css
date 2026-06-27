@@ -1,0 +1,531 @@
+:root {
+  --ink: #100f15;
+  --night: #171923;
+  --plum: #3a203b;
+  --ruby: #d93f4b;
+  --gold: #f6c85f;
+  --cream: #fff6df;
+  --mint: #8fd8c7;
+  --blue: #4c7bd9;
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--cream);
+  font-family: "Montserrat", Arial, sans-serif;
+  background:
+    radial-gradient(circle at 18% 16%, rgba(246, 200, 95, 0.16), transparent 28%),
+    radial-gradient(circle at 82% 24%, rgba(143, 216, 199, 0.14), transparent 24%),
+    linear-gradient(135deg, #11131b 0%, #26172c 47%, #10121b 100%);
+  overflow-x: hidden;
+}
+
+#sparkles {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cinema {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 32px));
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 36px 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(340px, 0.9fr);
+  gap: 28px;
+  align-items: center;
+}
+
+.stage,
+.invite-panel {
+  position: relative;
+}
+
+.projector {
+  position: absolute;
+  top: 24px;
+  left: 10px;
+  width: 118px;
+  height: 74px;
+  border: 3px solid rgba(255, 246, 223, 0.28);
+  border-radius: 16px;
+  background: rgba(16, 15, 21, 0.64);
+  box-shadow: var(--shadow);
+}
+
+.projector::after {
+  content: "";
+  position: absolute;
+  left: 105px;
+  top: 22px;
+  width: 360px;
+  height: 74px;
+  background: linear-gradient(90deg, rgba(246, 200, 95, 0.42), rgba(246, 200, 95, 0));
+  clip-path: polygon(0 32%, 100% 0, 100% 100%, 0 68%);
+  filter: blur(1px);
+}
+
+.projector span {
+  position: absolute;
+  top: 16px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: repeating-conic-gradient(var(--gold) 0 14deg, #2b2d38 14deg 28deg);
+  animation: spin 5s linear infinite;
+}
+
+.projector span:nth-child(1) {
+  left: 16px;
+}
+
+.projector span:nth-child(2) {
+  left: 58px;
+  animation-duration: 4s;
+}
+
+.projector span:nth-child(3) {
+  left: 84px;
+  top: 42px;
+  width: 13px;
+  height: 13px;
+  background: var(--ruby);
+}
+
+.screen {
+  min-height: 650px;
+  padding: 76px clamp(24px, 6vw, 70px) 42px;
+  border: 7px solid rgba(255, 246, 223, 0.18);
+  border-radius: 8px 8px 46px 46px;
+  background:
+    linear-gradient(180deg, rgba(255, 246, 223, 0.12), rgba(255, 246, 223, 0.03)),
+    linear-gradient(145deg, rgba(217, 63, 75, 0.34), rgba(76, 123, 217, 0.17));
+  box-shadow: var(--shadow), inset 0 -28px 52px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+}
+
+.label,
+.small-title,
+.ticket-overline {
+  margin: 0 0 10px;
+  color: var(--gold);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  line-height: 1.03;
+}
+
+h1 {
+  max-width: 680px;
+  font-size: clamp(3.2rem, 8vw, 6.8rem);
+}
+
+.subtitle {
+  max-width: 520px;
+  margin: 18px 0 34px;
+  color: rgba(255, 246, 223, 0.82);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.poster {
+  position: relative;
+  width: min(360px, 100%);
+  aspect-ratio: 2 / 3;
+  display: grid;
+  align-content: end;
+  border-radius: 8px;
+  background: #10121b;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.34);
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.poster::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.poster::after {
+  inset: 14px;
+  border: 2px solid rgba(255, 246, 223, 0.42);
+  border-radius: 6px;
+  z-index: 2;
+}
+
+.poster img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #10121b;
+}
+
+.poster-caption {
+  width: min(360px, 100%);
+  margin: 14px 0 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.poster-caption strong {
+  font-size: 2rem;
+}
+
+.invite-panel {
+  padding: 26px;
+  border: 1px solid rgba(255, 246, 223, 0.18);
+  border-radius: 8px;
+  background: rgba(16, 15, 21, 0.62);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.message h2 {
+  font-size: clamp(2rem, 4vw, 3.35rem);
+}
+
+.message p:not(.small-title) {
+  color: rgba(255, 246, 223, 0.76);
+  line-height: 1.65;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 22px 0;
+}
+
+.controls label:first-child {
+  grid-column: 1 / -1;
+}
+
+label {
+  display: grid;
+  gap: 7px;
+  color: rgba(255, 246, 223, 0.72);
+  font-size: 0.77rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+input {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid rgba(255, 246, 223, 0.18);
+  border-radius: 6px;
+  padding: 0 12px;
+  color: var(--cream);
+  font: inherit;
+  background: rgba(255, 255, 255, 0.07);
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(246, 200, 95, 0.18);
+}
+
+.music-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: center;
+  margin: 20px 0;
+  padding: 18px;
+  border: 1px solid rgba(143, 216, 199, 0.28);
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, rgba(76, 123, 217, 0.24), rgba(217, 63, 75, 0.18)),
+    rgba(255, 255, 255, 0.06);
+}
+
+.music-card h3 {
+  margin-bottom: 6px;
+  font-size: 1.45rem;
+}
+
+.music-card p:not(.small-title) {
+  margin: 0;
+  color: rgba(255, 246, 223, 0.72);
+  line-height: 1.45;
+}
+
+.music-btn {
+  width: 78px;
+  min-height: 78px;
+  border-radius: 50%;
+  color: var(--ink);
+  background: var(--mint);
+  box-shadow: 0 12px 28px rgba(143, 216, 199, 0.2);
+}
+
+.music-btn.playing {
+  color: var(--cream);
+  background: var(--ruby);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.seat-zone {
+  margin: 18px 0 20px;
+}
+
+.seats {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(36px, 1fr));
+  gap: 10px;
+}
+
+.seat {
+  aspect-ratio: 1.15;
+  border: 0;
+  border-radius: 8px 8px 16px 16px;
+  color: var(--cream);
+  font-weight: 800;
+  background: linear-gradient(180deg, #33415f, #202536);
+  cursor: pointer;
+  transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.seat:hover {
+  transform: translateY(-3px);
+}
+
+.seat.selected {
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--gold), #ffefaf);
+  box-shadow: 0 10px 24px rgba(246, 200, 95, 0.28);
+}
+
+.ticket {
+  display: grid;
+  grid-template-columns: 1fr 96px;
+  min-height: 132px;
+  margin: 20px 0;
+  color: var(--ink);
+  filter: drop-shadow(0 20px 38px rgba(0, 0, 0, 0.28));
+}
+
+.ticket-main,
+.ticket-side {
+  background: var(--cream);
+}
+
+.ticket-main {
+  padding: 22px;
+  border-radius: 8px 0 0 8px;
+}
+
+.ticket-main h3 {
+  margin-bottom: 8px;
+  font-size: 1.8rem;
+}
+
+.ticket-main p {
+  margin: 5px 0;
+}
+
+.ticket-side {
+  display: grid;
+  place-items: center;
+  border-left: 2px dashed rgba(16, 15, 21, 0.34);
+  border-radius: 0 8px 8px 0;
+}
+
+.ticket-side span {
+  writing-mode: vertical-rl;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.ticket-side strong {
+  color: var(--ruby);
+}
+
+.answer-area {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 12px;
+}
+
+button {
+  min-height: 48px;
+  border-radius: 6px;
+  border: 0;
+  padding: 0 16px;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.primary-btn {
+  color: var(--ink);
+  background: var(--gold);
+}
+
+.ghost-btn {
+  color: var(--cream);
+  border: 1px solid rgba(255, 246, 223, 0.28);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+dialog {
+  width: min(520px, calc(100% - 28px));
+  border: 0;
+  border-radius: 8px;
+  padding: 0;
+  color: var(--cream);
+  background: linear-gradient(150deg, #211627, #121824);
+  box-shadow: var(--shadow);
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.72);
+}
+
+.modal-content {
+  position: relative;
+  padding: 34px;
+}
+
+.modal-content h2 {
+  font-size: 2.4rem;
+}
+
+.modal-content p:not(.small-title) {
+  color: rgba(255, 246, 223, 0.78);
+  line-height: 1.65;
+}
+
+.close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  min-height: 36px;
+  padding: 0;
+  color: var(--cream);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.countdown {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 6px;
+  color: var(--ink);
+  font-weight: 800;
+  text-align: center;
+  background: var(--mint);
+}
+
+.confetti {
+  position: fixed;
+  top: -12px;
+  width: 10px;
+  height: 16px;
+  border-radius: 2px;
+  animation: fall 2.8s ease-in forwards;
+  z-index: 5;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(105vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 10px rgba(217, 63, 75, 0.14);
+  }
+}
+
+@media (max-width: 920px) {
+  .cinema {
+    grid-template-columns: 1fr;
+  }
+
+  .screen {
+    min-height: 580px;
+  }
+
+  .projector {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .cinema {
+    width: min(100% - 20px, 1180px);
+    padding: 10px 0 24px;
+  }
+
+  .screen {
+    min-height: auto;
+    padding: 34px 18px 22px;
+  }
+
+  .invite-panel {
+    padding: 18px;
+  }
+
+  .controls,
+  .music-card,
+  .answer-area,
+  .ticket {
+    grid-template-columns: 1fr;
+  }
+
+  .music-btn {
+    width: 100%;
+    min-height: 48px;
+    border-radius: 6px;
+  }
+
+  .ticket-side {
+    min-height: 58px;
+    border-left: 0;
+    border-top: 2px dashed rgba(16, 15, 21, 0.34);
+    border-radius: 0 0 8px 8px;
+  }
+
+  .ticket-main {
+    border-radius: 8px 8px 0 0;
+  }
+
+  .ticket-side span {
+    writing-mode: horizontal-tb;
+  }
+}
